@@ -11,7 +11,8 @@ export default async function signUp(email: string, password: string) {
 
   try {
     result = await createUserWithEmailAndPassword(auth, email, password); // Create a new user with email and password
-    const response = await fetch('http://172.17.0.2:5000/create-wallet');
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const response = await fetch(`${apiUrl}/create-wallet`);
     const { address, private_key, public_key, balance } = await response.json()
     const uid = result.user.uid
 
