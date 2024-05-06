@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    color: var(--textSoft);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.text {
+    font-size: 12px;
+}

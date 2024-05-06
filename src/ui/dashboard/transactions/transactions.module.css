@@ -1,0 +1,76 @@
+.container {
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    height: 450px;
+}
+
+.title {
+    margin-bottom: 20px;
+    font-weight: 200;
+    color: var(--textSoft);
+}
+
+.table {
+    width: 100%;
+}
+
+.table td {
+    padding: 10px;
+}
+
+.address {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.userImage {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.status {
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.pending {
+    background-color: #f7cb7375;
+}
+
+.done {
+    background-color: #afd6ee75;
+}
+
+.cancelled {
+    background-color: #f7737375;
+}
+
+.transactionID {
+    display: flex;
+    gap:10px;
+    align-items: center;
+}
+
+.bitcoin {
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.containerPagination {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonPagination {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.buttonPagination:disabled {
+    cursor: not-allowed;
+}

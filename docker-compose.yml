@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  local:
+    build:
+      context: .
+    image: itesa-challenge
+    volumes:
+      - ./src:/app/src
+    container_name: itesa-challenge
+    env_file:
+      - ./.env
+    networks:
+      - itesa-network
+    ports:
+      - "3000:3000"
+    tty: true
+    entrypoint: ["npm", "run", "dev"]
+networks:
+  default:
+    name: itesa-network
+  itesa-network:
+    name: itesa-network
