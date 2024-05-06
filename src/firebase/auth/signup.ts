@@ -15,6 +15,7 @@ export default async function signUp(email: string, password: string) {
     console.log("API URL ", apiUrl)
     console.log("AUTH ", auth)
     const response = await fetch(`${apiUrl}/create-wallet`);
+    console.log('response que es ', response)
     const { address, private_key, public_key, balance } = await response.json()
     const uid = result.user.uid
     console.log("data uid", uid)
