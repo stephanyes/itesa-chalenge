@@ -3,7 +3,7 @@ import signUp from "@/firebase/auth/signup";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import Image from "next/image";
-import { useDisclosure, Avatar, Box, Button, Flex, FormControl, FormHelperText, Heading, Input, InputGroup, InputLeftElement, InputRightElement, Link, Stack, Alert, AlertDescription, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
+import { Avatar, Box, Button, Flex, FormControl, FormHelperText, Heading, Input, InputGroup, InputLeftElement, InputRightElement, Link, Stack, Alert, AlertDescription, AlertIcon, AlertTitle, CloseButton } from "@chakra-ui/react";
 import React from "react";
 
 function Page(): JSX.Element {
@@ -13,12 +13,6 @@ function Page(): JSX.Element {
   const router = useRouter();
   const [ show, setShow ] = React.useState(false)
   const handleClick = () => setShow(!show)
-
-  // const {
-  //   isOpen: isVisible,
-  //   onClose,
-  //   onOpen,
-  // } = useDisclosure({ defaultIsOpen: false })
 
   const handleForm = async ( event: { preventDefault: () => void } ) => {
     event.preventDefault();

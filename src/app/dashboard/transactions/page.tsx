@@ -104,7 +104,7 @@ const TransactionsPage = ({searchParams}) => {
             }
         };
         fetchData();
-    }, [page]);
+    }, [page, uid, pageAction, beforeThis, afterThis]);
 
     if (loading) {
         return (

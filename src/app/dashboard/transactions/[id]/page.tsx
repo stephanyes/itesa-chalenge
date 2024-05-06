@@ -29,12 +29,13 @@ const ViewTransactionPage = () => {
              })
           };
 
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
         try {
             const response = await fetch(
-                'http://172.17.0.2:5000/transactions/verify-transaction', 
+                `${apiUrl}/transactions/verify-transaction`, 
                 requestOptions);
                 
-            console.log("responseeee", response)
             if (response.ok) {
                 const jsonData = await response.json();
                 setVerified(jsonData.message)
@@ -102,7 +103,7 @@ const ViewTransactionPage = () => {
         };
 
         fetchData();
-    }, []);
+    }, [uid]);
 
     if (loading) {
         return (

@@ -51,7 +51,7 @@ const Users = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [uid]);
 
     if (loading) {
         return (

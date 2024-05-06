@@ -42,7 +42,7 @@ const CardPage = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [uid]);
 
     if (loading) {
         return (

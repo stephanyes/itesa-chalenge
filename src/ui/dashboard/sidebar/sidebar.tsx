@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
 import { extractNameFromEmail } from "@/utils/utils";
 import { Avatar, Badge, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import SidebarDrawer from "./alert";
 
 
 const menuItems = [
@@ -35,12 +36,12 @@ const menuItems = [
 ]
 
 const Sidebar = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const { user } = useAuthContext() as { user: any };
     if (!user) {
         return redirect("/signin");
-      }
+    }
     const { name, lastName } = extractNameFromEmail(user.email);
-    const { isOpen, onOpen, onClose } = useDisclosure();
 
     const handleClick = async (e: any) => {
         e.preventDefault();
@@ -55,49 +56,13 @@ const Sidebar = () => {
                 Menu
             </Button>
 
-            {/* Drawer component for the sidebar in mobile view */}
-            <Drawer placement="top" onClose={onClose} isOpen={isOpen}>
-                <DrawerOverlay>
-                    <DrawerContent>
-                        <DrawerCloseButton />
-                        <DrawerBody backgroundColor={"#182237"} color="white">
-                        {/* Sidebar content */}
-                        <Flex direction="column" p={4}>
-                            <Flex align="center">
-                            <Avatar src="https://bit.ly/sage-adebayo" />
-                            <Box ml="3">
-                                <Text fontWeight="bold">
-                                {name} {lastName}
-                                <Badge ml="1" colorScheme="green">
-                                    New
-                                </Badge>
-                                </Text>
-                                <Text fontSize="sm">Crypto Loser</Text>
-                            </Box>
-                            </Flex>
-                            <ul style={{listStyle: "none"}}>
-                            {menuItems.map((cat) => (
-                                <li key={cat.title}>
-                                {/* <Text cursor={"pointer"} fontWeight="bold">{cat.title}</Text> */}
-                                {cat.list.map((item) => (
-                                    <MenuLink onClose={onClose} item={item} key={item.title} />
-                                ))}
-                                </li>
-                            ))}
-                            </ul>
-                            <Button
-                                leftIcon={<MdLogout />}
-                                variant="outline"
-                                colorScheme="red"
-                                onClick={handleClick}
-                            >
-                            Logout
-                            </Button>
-                        </Flex>
-                        </DrawerBody>
-                    </DrawerContent>
-                </DrawerOverlay>
-            </Drawer>
+            <SidebarDrawer 
+            isOpen={isOpen}
+            onClose={onClose}
+            name={name}
+            lastName={lastName}
+            menuItems={menuItems}
+            handleClick={handleClick} />
 
             {/* Sidebar content for desktop view */}
             <Flex direction="column" p={4} display={{ base: 'none', md: 'flex' }}>
