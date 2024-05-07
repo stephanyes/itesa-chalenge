@@ -13,7 +13,7 @@
 
 body {
   background-color: var(--bg) !important;
-  color: var(--text);
+  color: var(--text) !important;
 }
 
 a {
