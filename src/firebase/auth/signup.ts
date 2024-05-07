@@ -12,12 +12,13 @@ export default async function signUp(email: string, password: string) {
   try {
     result = await createUserWithEmailAndPassword(auth, email, password); // Create a new user with email and password
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
-    console.log("API URL ", apiUrl)
-    console.log("AUTH ", auth)
+    console.log(apiUrl, " A QUE API LE PEGAMOSSSSss")
     const response = await fetch(`${apiUrl}/create-wallet`);
-    console.log('response que es ', response)
+
     const { address, private_key, public_key, balance } = await response.json()
     const uid = result.user.uid
+
+    // Add user document to Firestore
     await setDoc(doc(db, "users", uid), {
       user: email,
       address,
@@ -39,5 +40,5 @@ export default async function signUp(email: string, password: string) {
     }
   }
 
-  return { result, error }; // Return the sign-up result and error (if any)
+  return { result, error };
 }

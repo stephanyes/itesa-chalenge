@@ -1,13 +1,10 @@
 'use client'
-import Pagination from "@/ui/dashboard/pagination/pagination";
-import Search from "@/ui/dashboard/search/search";
-import styles from "@/ui/dashboard/transactions/transactions.module.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useAuthContext } from "@/context/AuthContext";
 import { getAllTransactions, getDocument, getPaginatedData } from "@/firebase/firestore/getData";
 import { useEffect, useState } from "react";
-import { TableContainer, Text, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Button, ButtonGroup, AbsoluteCenter, Box, Spinner, Container, Flex } from "@chakra-ui/react";
+import { TableContainer, Text, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Button, ButtonGroup, AbsoluteCenter, Box, Spinner, Container, Flex, Center, Icon } from "@chakra-ui/react";
+import { TbError404 } from "react-icons/tb";
 
 //@ts-ignore
 const TransactionsPage = ({searchParams}) => {
@@ -133,23 +130,25 @@ const TransactionsPage = ({searchParams}) => {
 
     return (
         <>
-            <Flex flexDirection="column" alignItems="center">
-            {title}
-                <TableContainer>
-                    <Table variant='simple'>
+            <Flex flexDirection="column" alignItems="center" minH="50vh">
+            {transactions.length > 0 ? (
+                <>
+                <Text>{title}</Text>
+                    <TableContainer>
+                        <Table variant='simple'>
                         {/* <TableCaption>LATEST TRANSACTIONS</TableCaption> */}
                         <Thead alignItems="center">
                             <Tr>
-                                <Th>TxID</Th>
-                                <Th>Amount</Th>
-                                <Th>Sender</Th>
-                                <Th>Recipient</Th>
-                                <Th>Signature</Th>
-                                <Th>Action</Th>
+                            <Th>TxID</Th>
+                            <Th>Amount</Th>
+                            <Th>Sender</Th>
+                            <Th>Recipient</Th>
+                            <Th>Signature</Th>
+                            <Th>Action</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
-                        {transactions.map((transaction, index) => (
+                            {transactions.map((transaction, index) => (
                             <Tr key={index}>
                                 <Td>{transaction.txID}</Td>
                                 <Td isNumeric>${transaction.amount}</Td>
@@ -157,43 +156,55 @@ const TransactionsPage = ({searchParams}) => {
                                 <Td>{shortenWalletAddress(transaction.recipient)}</Td>
                                 <Td>{shortenWalletAddress(transaction.signature)}</Td>
                                 <Td>
-                                    <Link href={`/dashboard/transactions/${transaction.txID}`}>
-                                        <Button variant='outline' colorScheme='blue'>View</Button>
-                                    </Link>
+                                <Link href={`/dashboard/transactions/${transaction.txID}`}>
+                                    <Button variant='outline' colorScheme='blue'>View</Button>
+                                </Link>
                                 </Td>
                             </Tr>
-                        ))}
+                            ))}
                         </Tbody>
                         <Tfoot>
                         </Tfoot>
-                    </Table>
-                </TableContainer>
-                <Flex justifyContent="center">
-                    <Button
-                        bg={"#2e374a"}
-                        disabled={true}
-                        color={"white"}
-                        rounded={"md"}
-                        _hover={{
-                            bg:"#182237"
-                        }}
-                        onClick={handlePrevPage}
-                    >
-                        Previous
-                    </Button>
-                    <Button
-                        bg={"#2e374a"}
-                        disabled={true}
-                        color={"white"}
-                        rounded={"md"}
-                        _hover={{
-                            bg:"#182237"
-                        }}
-                    onClick={handleNextPage}
-                    >
-                        Next
-                    </Button>
-                </Flex>
+                        </Table>
+                    </TableContainer>
+                    <Flex justifyContent="center">
+                        <Button
+                            flex="1" // Distribute remaining space equally
+                            minWidth="120px" // Set a minimum width
+                            bg={"#2e374a"}
+                            disabled={true}
+                            color={"white"}
+                            rounded={"md"}
+                            _hover={{
+                                bg:"#182237"
+                            }}
+                            onClick={handlePrevPage}
+                            mr={2}
+                        >
+                            Previous
+                        </Button>
+                        <Button
+                            flex="1" // Distribute remaining space equally
+                            minWidth="120px" // Set a minimum width
+                            bg={"#2e374a"}
+                            disabled={true}
+                            color={"white"}
+                            rounded={"md"}
+                            _hover={{
+                                bg:"#182237"
+                            }}
+                            onClick={handleNextPage}
+                        >
+                            Next
+                        </Button>
+                    </Flex>
+                </>
+            ) : (
+                <Center flexDir={"column"} flex={1}>
+                    <Icon as={TbError404} boxSize={8} color="red.500" />
+                    <Text>No transactions available</Text>
+                </Center>
+            )}
             </Flex>
         </>
     )

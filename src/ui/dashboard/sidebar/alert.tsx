@@ -11,6 +11,7 @@ import {
   Text,
   Badge,
   Button,
+  Image,
 } from '@chakra-ui/react';
 import MenuLink from './menuLink/menuLink'; // Assuming MenuLink is another component
 import { MdLogout } from 'react-icons/md';
@@ -24,7 +25,7 @@ const SidebarDrawer = ({ isOpen, onClose, name, lastName, menuItems, handleClick
           <DrawerBody backgroundColor={"#182237"} color="white">
             <Flex direction="column" p={4}>
               <Flex align="center">
-                <Avatar src="https://bit.ly/sage-adebayo" />
+                <Image width={50} height={50} src="/itesa.png" />
                 <Box ml="3">
                   <Text fontWeight="bold">
                     {name} {lastName}
@@ -32,7 +33,7 @@ const SidebarDrawer = ({ isOpen, onClose, name, lastName, menuItems, handleClick
                       New
                     </Badge>
                   </Text>
-                  <Text fontSize="sm">Crypto Loser</Text>
+                  <Text fontSize="sm">Crypto Lord</Text>
                 </Box>
               </Flex>
               <ul style={{ listStyle: "none" }}>

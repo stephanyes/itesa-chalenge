@@ -1,9 +1,8 @@
 'use client'
-import { AbsoluteCenter, useToast, Alert, AlertIcon, Box, Button, Flex, Image, Input, Link, Spinner, Text } from '@chakra-ui/react';
-import { getDocument, getTransactionById } from '@/firebase/firestore/getData';
+import { useToast, Image, Button, Flex, Input, Link, Spinner, Text, Box } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '@/context/AuthContext';
-
+import { getDocument, getTransactionById } from '@/firebase/firestore/getData';
 
 const ViewTransactionPage = () => {
     const toast = useToast();
@@ -110,39 +109,16 @@ const ViewTransactionPage = () => {
 
     if (loading) {
         return (
-        <Box position='relative' h='100px'>
-            <AbsoluteCenter p='4' axis='both'>
-                <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
-            </AbsoluteCenter>
-        </Box>
+            <Flex justify="center" align="center" height="100vh">
+                <Spinner size="xl" color="blue.500" />
+            </Flex>
         )
     }
 
     return (
-        <Flex 
-            justify="center"
-            align="center"
-            p={[0, 4]}
-            width="100%"
-        >
-            <Flex
-                direction="column"
-                borderWidth="1px"
-                borderRadius="lg"
-                overflow="hidden"
-                width={['100%', '80%']}
-                >
-                <Flex
-                  align="center"
-                  justify="center"
-                  p="4"
-                >
+        <Flex justify="center" align="center" width="100%">
+            <Flex direction="column" borderWidth="1px" borderRadius="lg" overflow="hidden" width={['100%', '80%']}>
+                <Flex align="center" justify="center" p="4">
                     <Image src="/bitcoin.png" alt='' boxSize="30px" mr="2" />
                     <Text fontSize="lg">Bitcoin Network</Text>
                 </Flex>
@@ -176,21 +152,11 @@ const ViewTransactionPage = () => {
                         <Input name="signature" type="text" disabled value={transactions.signature} placeholder={transactions.signature} />
                     </Box>
                 </Flex>
-                <Flex direction="column" p="4" width={['100%', 'auto']} align={"center"}>
+                <Flex justify="space-between" p="4">
                     <Link href="/dashboard/transactions">
                         <Button colorScheme="blue">Return</Button>
                     </Link>
-                    <Button
-                        bg={"#2e374a"}
-                        color={"white"}
-                        rounded={"md"}
-                        _hover={{
-                            bg:"#182237"
-                        }}
-                        onClick={handleVerifyTX}
-                    >
-                        Verify TX
-                    </Button>
+                    <Button colorScheme="blue" onClick={handleVerifyTX}>Verify TX</Button>
                 </Flex>
             </Flex>
         </Flex>

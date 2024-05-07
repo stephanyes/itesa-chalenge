@@ -67,7 +67,7 @@ const Sidebar = () => {
             {/* Sidebar content for desktop view */}
             <Flex direction="column" p={4} display={{ base: 'none', md: 'flex' }}>
                 <Flex align="center" mb={4}> {/* Add margin bottom */}
-                    <Avatar src="https://bit.ly/sage-adebayo" />
+                <Image width={50} height={50} src="/itesa.png" alt={""} />
                     <Box ml="3">
                         <Text fontWeight="bold">
                             {name} {lastName}
@@ -75,7 +75,7 @@ const Sidebar = () => {
                                 New
                             </Badge>
                         </Text>
-                        <Text fontSize="sm">Crypto Loser</Text>
+                        <Text fontSize="sm">Crypto Lord</Text>
                     </Box>
                 </Flex>
                 <ul style={{ listStyle: "none", marginBottom: "20px" }}> {/* Add margin bottom */}

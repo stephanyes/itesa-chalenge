@@ -19,22 +19,40 @@ const Navbar = () => {
   // Capitalize the first letter of the last segment
   let title = lastSegment.charAt(0).toUpperCase() + lastSegment.slice(1);
 
+  if (title.toLowerCase() === "users") {
+    title = "Personal Information";
+  }
+
   if (title === "Personal Information" || title.toLowerCase() === "transactions" || title.toLowerCase() === "dashboard") {
     return (
       <Flex 
-        justifyContent="center"
-        alignItems="center"
-        width="100%"
-        height="5vh"
-        padding={"40px"}
-      >
-        <Text color="white">{title}</Text>
-      </Flex>
+      justifyContent="center"
+      alignItems="center"
+      width="100%"
+      height="5vh"
+      padding={"40px"}
+      // bg="#1A202C"
+      color="white"
+      position="relative"
+      borderRadius="5px"
+    >
+      <Flex
+        position="absolute"
+        borderRadius="10px"
+        top={0}
+        left={0}
+        right={0}
+        bottom={0}
+        border="2px solid white"
+        // bgGradient="linear(to-b, rgba(0,0,0,0), rgba(0,0,0,0.5))"
+      />
+      <Text fontSize="xl">{title}</Text>
+    </Flex>
     );
   }
 
   if (title.length > 6) {
-    title = "TXID - " + shortenWalletAddress(title);
+    title = "Transaction ID - " + shortenWalletAddress(title);
   }
 
   return (
@@ -44,6 +62,8 @@ const Navbar = () => {
       width="100%"
       height="5vh"
       padding={"40px"}
+      border="2px solid white"
+      borderRadius="10px"
       >
       <Text color="white">{title}</Text>
     </Flex>

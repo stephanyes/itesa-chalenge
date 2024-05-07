@@ -69,7 +69,7 @@ const Transactions = () => {
     }
     return (
         // <Box overflowX="auto">
-            <TableContainer border={"2px solid white"}>
+            <TableContainer border={"2px solid white"} borderRadius="10px">
                 <Table variant='simple'>
                     <TableCaption 
                     margin={"10px"}
