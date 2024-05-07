@@ -25,7 +25,7 @@ const SidebarDrawer = ({ isOpen, onClose, name, lastName, menuItems, handleClick
           <DrawerBody backgroundColor={"#182237"} color="white">
             <Flex direction="column" p={4}>
               <Flex align="center">
-                <Image width={50} height={50} src="/itesa.png" />
+                <Image alt="itesa-icon" width={50} height={50} src="/itesa.png" />
                 <Box ml="3">
                   <Text fontWeight="bold">
                     {name} {lastName}
