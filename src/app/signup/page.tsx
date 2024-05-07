@@ -43,7 +43,7 @@ function Page(): JSX.Element {
   }
 
   return (
-    <Flex h="100vh" alignItems="center" justifyContent="center">
+    <Flex bg={"gray.100', 'gray.700"} h="100vh" alignItems="center" justifyContent="center">
       <Flex
         flexDirection="column"
         backgroundColor={"gray.100', 'gray.700"}

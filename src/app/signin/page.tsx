@@ -49,7 +49,7 @@ function Page(): JSX.Element {
   }
 
   return (
-      <Flex h="100vh" alignItems="center" justifyContent="center">
+      <Flex backgroundColor={"gray.100', 'gray.700"} h="100vh" alignItems="center" justifyContent="center">
         <Flex flexDirection="column" backgroundColor={"gray.100', 'gray.700"} p={12} borderRadius={8} boxShadow="lg">
           <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
             <Box alignItems="center">
