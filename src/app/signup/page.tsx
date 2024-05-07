@@ -46,7 +46,7 @@ function Page(): JSX.Element {
     <Flex h="100vh" alignItems="center" justifyContent="center">
       <Flex
         flexDirection="column"
-        bg={"gray.100', 'gray.700"}
+        backgroundColor={"gray.100', 'gray.700"}
         p={12}
         borderRadius={8}
         boxShadow="lg"
@@ -65,6 +65,7 @@ function Page(): JSX.Element {
       <form onSubmit={handleForm}>
         <FormControl>
           <Input
+            id="email"
             placeholder="johndoe@gmail.com"
             type="email"
             variant="filled"
@@ -73,6 +74,7 @@ function Page(): JSX.Element {
           />
           <InputGroup>
             <Input
+              id="password"
               placeholder="**********"
               type={show ? "text" : "password"}
               variant="filled"

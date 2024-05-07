@@ -22,7 +22,7 @@ export default function RootLayout( { children }: { children: React.ReactNode } 
         Learn more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className={inter.className}>
+      <body  className={inter.className}>
         {/* Wrap the children with the AuthContextProvider to provide authentication context */}
         <ChakraProvider>
           <AuthContextProvider>

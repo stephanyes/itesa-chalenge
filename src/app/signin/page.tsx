@@ -50,7 +50,7 @@ function Page(): JSX.Element {
 
   return (
       <Flex h="100vh" alignItems="center" justifyContent="center">
-        <Flex flexDirection="column" bg={"gray.100', 'gray.700"} p={12} borderRadius={8} boxShadow="lg">
+        <Flex flexDirection="column" backgroundColor={"gray.100', 'gray.700"} p={12} borderRadius={8} boxShadow="lg">
           <Stack flexDir="column" mb="2" justifyContent="center" alignItems="center">
             <Box alignItems="center">
               <Image src="/itesa.png" alt="" width={50} height={50} />
@@ -60,6 +60,7 @@ function Page(): JSX.Element {
           <form onSubmit={handleForm}>
             <FormControl>
               <Input
+                id="email"
                 placeholder="johndoe@gmail.com"
                 type="email"
                 variant="filled"
@@ -68,6 +69,7 @@ function Page(): JSX.Element {
                 />
               <InputGroup>
                 <Input
+                  id="password"
                   placeholder="**********"
                   type={show ? "text" : "password"}
                   variant="filled"
