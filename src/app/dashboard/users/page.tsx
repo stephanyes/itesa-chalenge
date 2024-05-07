@@ -1,17 +1,9 @@
 'use client'
-import Pagination from "@/ui/dashboard/pagination/pagination";
-import Search from "@/ui/dashboard/search/search";
-import styles from "@/ui/dashboard/users/users.module.css";
-import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useAuthContext } from "@/context/AuthContext";
 import { extractNameFromEmail } from "@/utils/utils";
 import { getDocument } from "@/firebase/firestore/getData";
 import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, AbsoluteCenter, Box, Spinner } from "@chakra-ui/react";
-
-
-
 
 const Users = () => {
     const { user } = useAuthContext() as { user: any };

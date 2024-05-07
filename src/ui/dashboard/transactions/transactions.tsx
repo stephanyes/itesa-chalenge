@@ -1,10 +1,9 @@
 'use client'
-import styles from "@/ui/dashboard/transactions/transactions.module.css"
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useAuthContext } from "@/context/AuthContext";
 import { getDocument, getLatestTransactions } from "@/firebase/firestore/getData";
 import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, AbsoluteCenter, Box, Spinner } from "@chakra-ui/react";
+import { shortenWalletAddress } from "@/utils/utils";
 
 const Transactions = () => {
     const { user } = useAuthContext() as { user: any };
@@ -44,14 +43,6 @@ const Transactions = () => {
         fetchData();
     }, [uid]);
 
-    const shortenWalletAddress = (address: string, length = 6) => {
-        if (address.length <= length * 2) return address;
-        const start = address.substring(0, length);
-        const end = address.substring(address.length - length);
-        return `${start}...${end}`;
-    };
-
-
     if (loading) {
         return (
         <Box position='relative' h='100px'>
@@ -67,8 +58,8 @@ const Transactions = () => {
         </Box>
         )
     }
+
     return (
-        // <Box overflowX="auto">
             <TableContainer border={"2px solid white"} borderRadius="10px">
                 <Table variant='simple'>
                     <TableCaption 
@@ -104,7 +95,6 @@ const Transactions = () => {
                     </Tfoot>
                 </Table>
             </TableContainer>
-        // </Box>
     )
 }
 

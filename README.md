@@ -1,5 +1,4 @@
 # Itesa challenge
-
 Itesa challenge
 
 ## Techs
@@ -7,6 +6,8 @@ Itesa challenge
 - Next.js
 - Firebase
 - Typescript
+- Docker
+- Vercel
 
 
 ## Getting Started
@@ -31,6 +32,7 @@ NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+NEXT_PUBLIC_API_URL=public_api
 ```
 
 - Create `env` file and paste these variables with your own information.
@@ -39,13 +41,16 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 
 - In `src/firebase` directory, exists the directory `auth` containing the logic for `signin` and `signup`.
 
-## Folder Structure
+There is a `Dockerfile` and `docker-compose.yml` if you need a container ready to go to run this app. 
 
-The folder structure of this project is organized as follows:
+## Live Demo
 
-- `pages`: Contains the Next.js pages for server-side rendering.
-- `components`: Holds the reusable React components.
-- `lib`: Includes utility functions and modules.
-- `public`: Stores static assets such as images, fonts, and stylesheets.
-- `styles`: Contains global styles and Tailwind CSS configuration.
-- `firebase`: Houses the Firebase configuration and Firebase-related functions.
+Open [https://itesa-chalenge-ezug.vercel.app/](https://itesa-chalenge-ezug.vercel.app/) with your browser to see the result.
+
+This app, developed with Next.js, integrates a Flask backend hosted on Google Cloud Platform and a Firebase database. Next.js facilitates dynamic frontend interactions, while Flask manages backend processes. Firebase ensures secure data storage and management. This architecture enables efficient communication between frontend and backend components, resulting in a responsive and reliable user experience.
+
+
+
+
+
+

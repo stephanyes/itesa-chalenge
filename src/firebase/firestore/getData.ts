@@ -4,8 +4,13 @@ import { getFirestore, doc, getDoc, collection, query, or, where, getDocs, order
 // Get the Firestore instance
 const db = getFirestore(firebase_app);
 
-// Function to retrieve a document from a Firestore collection
-export async function getDocument(collection: any, id: any) {
+/**
+ * Retrieves a document from a Firestore collection with the specified ID.
+ * @param {string} collection - The name of the Firestore collection.
+ * @param {string} id - The ID of the document to retrieve.
+ * @returns {Promise<{ result: DocumentData | null, error: any }>} A promise that resolves with the retrieved document data and any error that occurs.
+ */
+export async function getDocument(collection: any, id: any): Promise<{ result: DocumentData | null; error: any; }> {
   // Create a document reference using the provided collection and ID
   const docRef = doc(db, collection, id);
   // Variable to store the result of the operation
@@ -25,7 +30,13 @@ export async function getDocument(collection: any, id: any) {
   return { result, error };
 }
 
-export async function getLatestTransactions(collectionName: string, clause:string) {
+/**
+ * Retrieves the latest transactions from a Firestore collection based on a clause.
+ * @param {string} collectionName - The name of the Firestore collection.
+ * @param {string} clause - The clause to filter transactions.
+ * @returns {Promise<{ transactions: any[], error: any }>} A promise that resolves with an array of transactions and any error that occurs.
+ */
+export async function getLatestTransactions(collectionName: string, clause:string): Promise<{ transactions: any[]; error: any; }> {
   let transactions:any[] = [];
   let error = null;
   const q = query(collection(db, collectionName))
@@ -50,7 +61,13 @@ export async function getLatestTransactions(collectionName: string, clause:strin
   return { transactions, error }
 } 
 
-export async function getTransactionById(collectionName: string, txID:string) {
+/**
+ * Retrieves a transaction by its ID from a Firestore collection.
+ * @param {string} collectionName - The name of the Firestore collection.
+ * @param {string} txID - The ID of the transaction.
+ * @returns {Promise<{ transactions: any[], error: any }>} A promise that resolves with an array containing the transaction data and any error that occurs.
+ */
+export async function getTransactionById(collectionName: string, txID:string): Promise<{ transactions: any[]; error: any; }> {
   let transactions:any[] = [];
   let error = null;
   const q = query(collection(db, collectionName))
@@ -71,7 +88,13 @@ export async function getTransactionById(collectionName: string, txID:string) {
   return { transactions, error }
 } 
 
-export async function getTopThreeTransactions(collectionName: string, clause:string) {
+/**
+ * Retrieves the top three transactions from a Firestore collection based on a clause.
+ * @param {string} collectionName - The name of the Firestore collection.
+ * @param {string} clause - The clause to filter transactions.
+ * @returns {Promise<{ transactions: any[], error: any }>} A promise that resolves with an array containing the top three transactions and any error that occurs.
+ */
+export async function getTopThreeTransactions(collectionName: string, clause:string): Promise<{ transactions: any[]; error: any; }> {
   let transactions:any[] = [];
   let error = null;
   const q = query(collection(db, collectionName))
@@ -96,7 +119,13 @@ export async function getTopThreeTransactions(collectionName: string, clause:str
   return { transactions, error }
 } 
 
-export async function getAllTransactions(collectionName: string, clause: string) {
+/**
+ * Retrieves all transactions from a Firestore collection based on a clause.
+ * @param {string} collectionName - The name of the Firestore collection.
+ * @param {string} clause - The clause to filter transactions.
+ * @returns {Promise<{ transactions: any[], error: any }>} A promise that resolves with an array containing all transactions and any error that occurs.
+ */
+export async function getAllTransactions(collectionName: string, clause: string): Promise<{ transactions: any[]; error: any; }> {
   let transactions: any[] = [];
   let error = null;
   const q = query(collection(db, collectionName));
@@ -116,7 +145,12 @@ export async function getAllTransactions(collectionName: string, clause: string)
   return { transactions, error };
 } 
 
-export async function getPaginatedData(entity: any) {
+/**
+ * Retrieves paginated data from a Firestore collection based on provided parameters.
+ * @param {Object} entity - Object containing parameters for pagination.
+ * @returns {Promise<any[]>} A promise that resolves with an array containing the paginated data.
+ */
+export async function getPaginatedData(entity: any): Promise<any[]> {
 
   const { 
     collection: collectionName,
@@ -173,16 +207,9 @@ export async function getPaginatedData(entity: any) {
     const filtred = Object.keys(fields).reduce((obj, field) => {
       //@ts-ignore
       obj[field] = record[field];
-      // console.log("obj ", obj)
-      // console.log("field ", field)
       return obj;
     }, {});
-    // console.log(filtred, "FILTRAD")
     return filtred;
   })
   return records
-}
-
-function startBefore(previousSnapshot: any): import("@firebase/firestore").QueryNonFilterConstraint {
-  throw new Error("Function not implemented.");
 }

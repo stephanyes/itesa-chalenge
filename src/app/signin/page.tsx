@@ -2,7 +2,19 @@
 import { signIn } from "@/firebase/auth/signIn";
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
-import { Flex, Stack, Avatar, Heading, FormControl, InputGroup, Input, InputRightElement, Button, FormHelperText, Link, Box, FormLabel, Switch, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Flex,
+  Stack,
+  Heading,
+  FormControl,
+  InputGroup,
+  Input,
+  InputRightElement,
+  Button,
+  FormHelperText,
+  Link,
+  Box,
+} from "@chakra-ui/react";
+
 import Image from "next/image";
 
 function Page(): JSX.Element {

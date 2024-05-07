@@ -5,6 +5,7 @@ import { getAllTransactions, getDocument, getPaginatedData } from "@/firebase/fi
 import { useEffect, useState } from "react";
 import { TableContainer, Text, Table, TableCaption, Thead, Tr, Th, Tbody, Td, Tfoot, Button, ButtonGroup, AbsoluteCenter, Box, Spinner, Container, Flex, Center, Icon } from "@chakra-ui/react";
 import { TbError404 } from "react-icons/tb";
+import { shortenWalletAddress } from "@/utils/utils";
 
 //@ts-ignore
 const TransactionsPage = ({searchParams}) => {
@@ -120,14 +121,6 @@ const TransactionsPage = ({searchParams}) => {
     }
 
     const title = page ? <Text>Page: {page}</Text> : null;
-
-    const shortenWalletAddress = (address: string, length = 6) => {
-        if (address.length <= length * 2) return address;
-        const start = address.substring(0, length);
-        const end = address.substring(address.length - length);
-        return `${start}...${end}`;
-    };
-
     return (
         <>
             <Flex flexDirection="column" alignItems="center" minH="50vh">

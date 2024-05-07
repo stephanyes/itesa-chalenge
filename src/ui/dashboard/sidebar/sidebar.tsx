@@ -1,5 +1,4 @@
 'use client'
-import styles from "@/ui/dashboard/sidebar/sidebar.module.css"
 import { MdDashboard, MdLogout, MdShoppingBag, MdSupervisedUserCircle } from "react-icons/md"
 import { auth } from "@/firebase/auth/signIn";
 import { signOut } from "firebase/auth";
@@ -8,7 +7,7 @@ import Image from "next/image"
 import { redirect } from "next/navigation";
 import { useAuthContext } from "@/context/AuthContext";
 import { extractNameFromEmail } from "@/utils/utils";
-import { Avatar, Badge, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import { Badge, Box, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
 import SidebarDrawer from "./alert";
 
 
@@ -81,7 +80,6 @@ const Sidebar = () => {
                 <ul style={{ listStyle: "none", marginBottom: "20px" }}> {/* Add margin bottom */}
                     {menuItems.map((cat) => (
                         <li key={cat.title}>
-                            {/* <Text fontWeight="bold">{cat.title}</Text> */}
                             {cat.list.map((item) => (
                                 <MenuLink onClose={null} item={item} key={item.title} />
                             ))}
@@ -100,44 +98,6 @@ const Sidebar = () => {
             </Flex>
         </Flex>
     );
-
-    // return (
-    //     <div className={styles.container}>
-    //         {/* <div className={styles.user}>
-    //             <Image className={styles.userImage} src="/no-avatar.png" alt="" width="50" height="50"/>
-    //             <div className={styles.userDetail}>
-    //                 <span className={styles.username}>{name} {lastName}</span>
-    //                 <span className={styles.userTitle}>Ultimate user</span>
-    //             </div>
-    //         </div> */}
-    //         <Flex>
-    //             <Avatar src='https://bit.ly/sage-adebayo' />
-    //             <Box ml='3'>
-    //                 <Text fontWeight='bold'>
-    //                 {name} {lastName}
-    //                 <Badge ml='1' colorScheme='green'>
-    //                     New
-    //                 </Badge>
-    //                 </Text>
-    //                 <Text fontSize='sm'>Crypto Loser</Text>
-    //             </Box>
-    //         </Flex>
-    //         <ul className={styles.list}>
-    //             {menuItems.map((cat) => (
-    //                 <li key={cat.title}>
-    //                     <span className={styles.cat}>{cat.title}</span>
-    //                     {cat.list.map(item => (
-    //                         <MenuLink item={item} key={item.title} />
-    //                     ))}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //         <button className={styles.logout} onClick={handleClick}>
-    //             <MdLogout />
-    //             Logout
-    //         </button>
-    //     </div>
-    // )
 }
 
 export default Sidebar

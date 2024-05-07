@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 import firebase_app from '@/firebase/config';
-import { Box, AbsoluteCenter, Spinner, Flex } from '@chakra-ui/react';
+import { Spinner, Flex } from '@chakra-ui/react';
 
 // Initialize Firebase auth instance
 const auth = getAuth( firebase_app );

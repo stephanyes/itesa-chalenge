@@ -1,4 +1,3 @@
-import styles from "@/ui/dashboard/footer/footer.module.css"
 import { Flex, Box, Text } from "@chakra-ui/react";
 import Image from "next/image";
 const Footer = () => {
@@ -21,18 +20,3 @@ const Footer = () => {
 }
 
 export default Footer;
-
-// return(
-//     <div className={styles.container}>
-//         <div className={styles.logo}>
-//             <Image 
-//             src="/itesa.png"
-//             alt=""
-//             width={25}
-//             height={25}
-//             />
-//             Itesa Global
-//         </div>
-//         <div className={styles.text}>© All rights reserved.</div>
-//     </div>
-// )
