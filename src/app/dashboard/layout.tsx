@@ -7,7 +7,7 @@ import { Box, Flex } from "@chakra-ui/react"
 const Layout = async ({ children }: any) => {
     return (
         <Flex backgroundColor="#182237" color="white" flexDirection={{ base: "column", md: "row" }} minHeight="100vh">
-            <Box h="100%" flex={{ base: "none", md: 1 }} padding={{ base: "20px", md: 0 }}>
+            <Box h="100%" flex={{ base: "none", md: 1 }} padding={{ base: 0, md: '20px' }}>
                 <Sidebar />
             </Box>
             <Flex flex={{ base: "auto", md: 4 }} flexDirection="column">

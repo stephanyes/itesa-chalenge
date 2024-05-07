@@ -93,7 +93,7 @@ function Page(): JSX.Element {
                 <Button type="submit" colorScheme="teal" mb={8}>
                   Log In
                 </Button>
-                <Box color="teal.500">You don&apos;t have an account?<Link color="teal.500" href="/signup">Sign Up</Link></Box>
+                <Box color="teal.500">You don&apos;t have an account? <Link color="teal.500" href="/signup">Sign Up</Link></Box>
               </Flex>
             </FormControl>
           </form>

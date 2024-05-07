@@ -160,7 +160,7 @@ const TransactionsPage = ({searchParams}) => {
                         </Tfoot>
                         </Table>
                     </TableContainer>
-                    <Flex justifyContent="center">
+                    <Flex justifyContent="center" marginTop={2}>
                         <Button
                             flex="1" // Distribute remaining space equally
                             minWidth="120px" // Set a minimum width
