@@ -60,6 +60,7 @@ function Page(): JSX.Element {
           <form onSubmit={handleForm}>
             <FormControl>
               <Input
+                bg={"transparent"}
                 id="email"
                 placeholder="johndoe@gmail.com"
                 type="email"
@@ -69,6 +70,7 @@ function Page(): JSX.Element {
                 />
               <InputGroup>
                 <Input
+                  bg={"transparent"}
                   id="password"
                   placeholder="**********"
                   type={show ? "text" : "password"}
